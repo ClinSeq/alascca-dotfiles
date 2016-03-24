@@ -5,9 +5,6 @@
 #
 ########################################
 
-# Make vim the default editor
-export EDITOR="vim"
-
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
@@ -26,19 +23,6 @@ export MANPAGER="less -X"
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto"
 
-# Link Homebrew casks in `/Applications` rather than `~/Applications`
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-#Don't user gnome to ask for password
-unset SSH_ASKPASS
-
 if hash brew 2> /dev/null; then
   source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
-fi
-
-# only set on os x
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-  if [ -f /usr/local/bin/lesspipe.sh ]; then
-    export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
-  fi
 fi
