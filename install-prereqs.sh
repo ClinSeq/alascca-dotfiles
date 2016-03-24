@@ -39,7 +39,7 @@ pip install --upgrade git+https://github.com/dakl/localq.git
 pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
 
 # pip install from bitbucket/clinseq
-pip install --upgrade git+https://bitbucket.org/clinseq/pypedream.git
+pip install --upgrade git+https://github.com/clinseq/pypedream.git
 pip install --upgrade git+https://bitbucket.org/clinseq/pyautoseq.git
 git clone https://bitbucket.org/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
 
