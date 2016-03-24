@@ -14,7 +14,10 @@ VARIANTCALLERS="freebayes=1.0.1 scalpel=0.5.1 pindel=0.2.5a7 lofreq=2.1.2 vardic
 PACKAGES="pysam=0.8.4 pyvcf=0.6.8.dev0"
 
 # this upgrades ncurses to 5.9.4 which samtools needs
-conda install -y -c r ncurses
+conda install -y -c r ncurses 
+
+# install matplotlib from conda since it fails when installing from source from pypi using pip
+conda install -y matplotlib
 
 conda install -y -c dakl skewer=0.1.126
 conda install -y -c bioconda $ALIGNERS
@@ -24,8 +27,6 @@ conda install -y -c bioconda $PACKAGES
 
 conda install -y -c r r=3.2.2
 
-#Rscript install-r-packages.R
-
 pip install --upgrade jsonschema
 pip install --upgrade click
 pip install --upgrade pydotplus
@@ -33,12 +34,17 @@ pip install --upgrade pymongo
 pip install --upgrade vcf_parser
 pip install --upgrade git+https://github.com/ewels/MultiQC.git
 pip install --upgrade git+https://github.com/dakl/localq.git
-pip install --upgrade git+https://dakl@bitbucket.org/dakl/pypedream.git
-pip install --upgrade git+https://github.com/dakl/multiqc-alascca.git
-pip install --upgrade git+https://dakl@bitbucket.org/dakl/pyautoseq.git
 
+# pip install from github/clinseq
+pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
+
+# pip install from bitbucket/clinseq
+pip install --upgrade git+https://bitbucket.org/clinseq/pypedream.git
+pip install --upgrade git+https://bitbucket.org/clinseq/pyautoseq.git
 git clone https://bitbucket.org/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
 
 ## linuxbrew
-git clone https://github.com/Linuxbrew/linuxbrew.git /nfs/ALSCCA/linuxbrew
+git clone https://github.com/Linuxbrew/linuxbrew.git /nfs/ALASCCA/linuxbrew
 brew install ack tree 
+
+Rscript install-r-packages.R                                                                                                              
