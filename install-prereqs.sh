@@ -19,7 +19,8 @@ conda install -y -c r ncurses
 # install matplotlib from conda since it fails when installing from source from pypi using pip
 conda install -y matplotlib
 
-conda install -y -c r r=3.2.2 r-devtools
+conda install -y -c r r=3.2.2 r-devtools 
+conda install -y -c bioconda r-pscbs
 conda install -y -c bioconda skewer=0.1.126
 conda install -y -c bioconda $ALIGNERS
 conda install -y -c bioconda $TOOLSETS
