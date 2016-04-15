@@ -26,6 +26,7 @@ conda install -y -c bioconda $ALIGNERS
 conda install -y -c bioconda $TOOLSETS
 conda install -y -c bioconda $VARIANTCALLERS
 conda install -y -c bioconda $PACKAGES
+conda install -y pyodbc
 
 pip install --upgrade jsonschema
 pip install --upgrade click
