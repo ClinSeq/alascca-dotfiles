@@ -41,8 +41,8 @@ pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
 pip install --upgrade git+https://github.com/clinseq/pypedream.git
 
 # pip install from bitbucket/clinseq
+pip uninstall reportgen || pip install git+https://bitbucket.org/clinseq/reportgen.git
 pip install --upgrade git+https://bitbucket.org/clinseq/pyautoseq.git
-pip uninstall reportgen && pip install git+https://bitbucket.org/clinseq/reportgen.git
 git clone https://bitbucket.org/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
 
 ## linuxbrew
