@@ -3,6 +3,7 @@ export PATH="/nfs/ALASCCA/linuxbrew/bin:$PATH"
 export MANPATH="/nfs/ALASCCA/linuxbrew/share/man:$MANPATH"
 export INFOPATH="/nfs/ALASCCA/linuxbrew/share/info:$INFOPATH"
 
+export PATH=/nfs/ALASCCA/.texlive2015/texlive/2015/bin/x86_64-linux:$PATH
 export PATH=/nfs/ALASCCA/pipeline-tools/bin:/nfs/ALASCCA/pipeline-tools/scripts/:$PATH
 export PATH=/nfs/ALASCCA/miniconda2/bin/:$PATH
 

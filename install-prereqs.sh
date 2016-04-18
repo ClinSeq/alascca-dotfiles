@@ -38,14 +38,23 @@ pip install --upgrade git+https://github.com/dakl/localq.git
 
 # pip install from github/clinseq
 pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
+pip install --upgrade git+https://github.com/clinseq/pypedream.git
 
 # pip install from bitbucket/clinseq
-pip install --upgrade git+https://github.com/clinseq/pypedream.git
 pip install --upgrade git+https://bitbucket.org/clinseq/pyautoseq.git
+pip uninstall reportgen && pip install git+https://bitbucket.org/clinseq/reportgen.git
 git clone https://bitbucket.org/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
 
 ## linuxbrew
 git clone https://github.com/Linuxbrew/linuxbrew.git /nfs/ALASCCA/linuxbrew
 brew install ack tree 
 
+# install R packages
 Rscript install-r-packages.R                                                                                                              
+
+## TexLive 2015
+cd /tmp
+wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -zxvf install-tl-unx.tar.gz
+cd install-tl-*
+./install-tl -profile /nfs/ALASCCA/alascca-dotfiles/texlive.profile
