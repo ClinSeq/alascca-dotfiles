@@ -27,6 +27,7 @@ conda install -y -c bioconda $TOOLSETS
 conda install -y -c bioconda $VARIANTCALLERS
 conda install -y -c bioconda $PACKAGES
 conda install -y pyodbc
+conda install -y bcbio-nextgen==0.9.8a0
 
 pip install --upgrade jsonschema
 pip install --upgrade click
