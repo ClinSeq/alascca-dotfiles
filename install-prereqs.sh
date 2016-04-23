@@ -9,9 +9,9 @@ conda config --add channels bioconda
 conda install -y  pip cython
 
 ALIGNERS="bwa=0.7.12 star=2.4.2a"
-TOOLSETS="picard=1.141 samtools=1.2 bcftools=1.2 samblaster=0.1.22 sambamba=0.5.9 vt=2015.11.10 vcflib=1.0.0_rc0 fastqc=0.11.4 bedtools=2.25.0"
+TOOLSETS="picard=1.141 samtools=1.2 htslib=1.2.1 bcftools=1.2 samblaster=0.1.22 sambamba=0.5.9 vt=2015.11.10 vcflib=1.0.0_rc0 fastqc=0.11.4 bedtools=2.25.0 variant-effect-predictor=83"
 VARIANTCALLERS="freebayes=1.0.1 scalpel=0.5.1 pindel=0.2.5a7 lofreq=2.1.2 vardict-java=1.4.3 vardict=2016.02.19 cnvkit=0.7.9" 
-PACKAGES="pysam=0.8.4 pyvcf=0.6.8.dev0"
+PACKAGES="pysam=0.8.4 pyvcf=0.6.8.dev0 bcbio-nextgen==0.9.7"
 
 # this upgrades ncurses to 5.9.4 which samtools needs
 conda install -y -c r ncurses 
@@ -27,7 +27,6 @@ conda install -y -c bioconda $TOOLSETS
 conda install -y -c bioconda $VARIANTCALLERS
 conda install -y -c bioconda $PACKAGES
 conda install -y pyodbc
-conda install -y bcbio-nextgen==0.9.7
 
 pip install --upgrade jsonschema
 pip install --upgrade click
@@ -42,9 +41,16 @@ pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
 pip install --upgrade git+https://github.com/clinseq/pypedream.git
 
 # pip install from bitbucket/clinseq
-pip uninstall reportgen || pip install git+https://bitbucket.org/clinseq/reportgen.git
+pip uninstall -y reportgen || pip install -y git+https://bitbucket.org/clinseq/reportgen.git
 pip install --upgrade git+https://bitbucket.org/clinseq/pyautoseq.git
 git clone https://bitbucket.org/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
+git clone https://bitbucket.org/clinseq/genome-resources.git /nfs/ALASCCA/genome-resources 
+
+DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
+if [ ! -e $DBCONF ]; then
+  echo "Copying dbconfig"
+  cp /nfs/ALASCCA/alascca-dotfiles/clinseq-referraldb-config.json $DBCONF
+fi
 
 ## linuxbrew
 git clone https://github.com/Linuxbrew/linuxbrew.git /nfs/ALASCCA/linuxbrew
@@ -59,3 +65,11 @@ wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -zxvf install-tl-unx.tar.gz
 cd install-tl-*
 ./install-tl -profile /nfs/ALASCCA/alascca-dotfiles/texlive.profile
+
+echo 
+echo "you should now run "
+echo generate-ref --genome-resources /nfs/ALASCCA/genome-resources --outdir /nfs/ALASCCA/autoseq-genome
+echo "to generate reference files required by autoseq"
+
+"
+echo
