@@ -11,7 +11,7 @@ conda install -y  pip cython
 ALIGNERS="bwa=0.7.12 star=2.4.2a"
 TOOLSETS="picard=1.141 samtools=1.2 htslib=1.2.1 bcftools=1.2 samblaster=0.1.22 sambamba=0.5.9 vt=2015.11.10 vcflib=1.0.0_rc0 fastqc=0.11.4 bedtools=2.25.0 variant-effect-predictor=83"
 VARIANTCALLERS="freebayes=1.0.1 scalpel=0.5.1 pindel=0.2.5a7 lofreq=2.1.2 vardict-java=1.4.3 vardict=2016.02.19 cnvkit=0.7.9" 
-PACKAGES="pysam=0.8.4 pyvcf=0.6.8.dev0 bcbio-nextgen==0.9.7 bioconductor-variantannotation=0.16.4 r-rjsonio=1.3_0"
+PACKAGES="pysam=0.8.4 pyvcf=0.6.8.dev0 bcbio-nextgen==0.9.7 bioconductor-variantannotation=1.16.4 r-rjsonio=1.3_0"
 
 # this upgrades ncurses to 5.9.4 which samtools needs
 conda install -y -c r ncurses 
