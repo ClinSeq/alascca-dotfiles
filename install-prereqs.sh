@@ -40,10 +40,12 @@ pip install --upgrade git+https://github.com/dakl/localq.git
 pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
 pip install --upgrade git+https://github.com/clinseq/pypedream.git
 
+# clone from github/clinseq
+git clone https://github.com/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
+
 # pip install from bitbucket/clinseq
 pip uninstall -y reportgen || pip install -y git+https://bitbucket.org/clinseq/reportgen.git
 pip install --upgrade git+https://bitbucket.org/clinseq/pyautoseq.git
-git clone https://bitbucket.org/clinseq/pipeline-tools /nfs/ALASCCA/pipeline-tools
 git clone https://bitbucket.org/clinseq/genome-resources.git /nfs/ALASCCA/genome-resources 
 
 DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
