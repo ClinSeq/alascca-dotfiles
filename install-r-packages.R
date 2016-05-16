@@ -5,7 +5,7 @@
 repo <- "http://ftp.acc.umu.se/mirror/CRAN/"
 #update.packages(repos=repo, ask=FALSE)
 
-packages <- c("httr", "RCurl", "getopt", "devtools", "plyr", "reshape", "data.table", "ggplot2", "knitr", "xtable", "uuid", "pamr", "glmnet" )
+packages <- c()
 biocpackages <- c("CNAnorm", "QDNAseq", "QDNAseq.hg19")
 githubrepos <- c("dakl/clinseqr")
 
