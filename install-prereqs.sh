@@ -28,10 +28,18 @@ conda install -y -c bioconda $VARIANTCALLERS
 conda install -y -c bioconda $PACKAGES
 conda install -y pyodbc
 
-pip install --upgrade jsonschema
-pip install --upgrade click
+conda install -y jsonschema click 
+
+conda install -y r-httr
+conda install -y r-rcurl
+conda install -y r-getopt
+conda install -y r-devtools
+conda install -y r-plyr
+conda install -y r-reshape
+conda install -y r-data.table
+conda install -y r-ggplot2=2.1.0
+
 pip install --upgrade pydotplus
-pip install --upgrade pymongo
 pip install --upgrade vcf_parser
 pip install --upgrade git+https://github.com/ewels/MultiQC.git
 pip install --upgrade git+https://github.com/dakl/localq.git
