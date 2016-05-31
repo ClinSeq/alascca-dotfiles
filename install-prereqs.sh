@@ -27,6 +27,7 @@ conda install -y -c bioconda $TOOLSETS
 conda install -y -c bioconda $VARIANTCALLERS
 conda install -y -c bioconda $PACKAGES
 conda install -y pyodbc
+conda install -y multiqc
 
 conda install -y jsonschema click 
 
@@ -41,7 +42,6 @@ conda install -y r-ggplot2=2.1.0
 
 pip install --upgrade pydotplus
 pip install --upgrade vcf_parser
-pip install --upgrade git+https://github.com/ewels/MultiQC.git
 pip install --upgrade git+https://github.com/dakl/localq.git
 
 # pip install from github/clinseq
