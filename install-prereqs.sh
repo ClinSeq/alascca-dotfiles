@@ -6,39 +6,9 @@ bash Miniconda-latest-Linux-x86_64.sh -b -p /nfs/ALASCCA/miniconda2
 
 conda config --add channels r
 conda config --add channels bioconda
-conda install -y  pip cython
 
-ALIGNERS="bwa=0.7.12 star=2.4.2a"
-TOOLSETS="picard=2.3.0 samtools=1.2 htslib=1.2.1 bcftools=1.2 samblaster=0.1.22 sambamba=0.5.9 vt=2015.11.10 vcflib=1.0.0_rc0 fastqc=0.11.4 bedtools=2.25.0 variant-effect-predictor=83"
-VARIANTCALLERS="freebayes=1.0.1 scalpel=0.5.1 pindel=0.2.5a7 lofreq=2.1.2 vardict-java=1.4.3 vardict=2016.02.19 cnvkit=0.7.9" 
-PACKAGES="pysam=0.8.4 pyvcf=0.6.8.dev0 bcbio-nextgen==0.9.7 bioconductor-variantannotation=1.16.4 r-rjsonio=1.3_0"
-
-# this upgrades ncurses to 5.9.4 which samtools needs
-conda install -y -c r ncurses 
-
-# install matplotlib from conda since it fails when installing from source from pypi using pip
-conda install -y matplotlib
-
-conda install -y -c r r=3.2.2 r-devtools 
-conda install -y -c bioconda r-pscbs
-conda install -y -c bioconda skewer=0.1.126
-conda install -y -c bioconda $ALIGNERS
-conda install -y -c bioconda $TOOLSETS
-conda install -y -c bioconda $VARIANTCALLERS
-conda install -y -c bioconda $PACKAGES
-conda install -y pyodbc
-conda install -y multiqc
-
-conda install -y jsonschema click 
-
-conda install -y r-httr
-conda install -y r-rcurl
-conda install -y r-getopt
-conda install -y r-devtools
-conda install -y r-plyr
-conda install -y r-reshape
-conda install -y r-data.table
-conda install -y r-ggplot2=2.1.0
+wget -O /tmp/autoseq-conda-list.txt https://raw.githubusercontent.com/dakl/autoseq/master/conda-list.txt
+conda install --file /tmp/autoseq-conda-list.txt
 
 pip install --upgrade pydotplus
 pip install --upgrade vcf_parser
