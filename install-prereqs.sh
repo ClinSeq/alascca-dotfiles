@@ -33,11 +33,11 @@ function git_clone_or_pull {
 git_clone_or_pull https://github.com/dakl/autoseq-scripts /nfs/ALASCCA/autoseq-scripts
 git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources 
 git_clone_or_pull https://github.com/dakl/autoseq.git /nfs/ALASCCA/autoseq
-pip install /nfs/ALASCCA/autoseq
+pip install --upgrade /nfs/ALASCCA/autoseq
 
 # needs pwd
 git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
-pip install /nfs/ALASCCA/aurora
+pip install --upgrade /nfs/ALASCCA/aurora
 
 # pip install from bitbucket/clinseq
 pip uninstall -y reportgen || pip install -y git+https://bitbucket.org/clinseq/reportgen.git
