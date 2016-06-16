@@ -9,6 +9,7 @@ conda config --add channels bioconda
 
 wget -O /tmp/autoseq-conda-list.txt https://raw.githubusercontent.com/dakl/autoseq/master/conda-list.txt
 conda install -y --file /tmp/autoseq-conda-list.txt
+rm /tmp/autoseq-conda-list.txt
 
 conda install -y cryptography psycopg2
 pip install --upgrade git+https://github.com/ClinSeq/referral-manager.git
