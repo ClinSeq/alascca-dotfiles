@@ -44,9 +44,6 @@ git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
 git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
 pip --upgrade /nfs/ALASCCA/aurora
 
-# pip install from bitbucket/clinseq
-pip uninstall -y reportgen || pip install -y git+https://bitbucket.org/clinseq/reportgen.git
-
 DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
 if [ ! -e $DBCONF ]; then
   echo "Copying dbconfig"
