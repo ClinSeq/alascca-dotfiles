@@ -42,7 +42,7 @@ pip install /nfs/ALASCCA/autoseq
 # needs pwd
 git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
 git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
-pip -e --upgrade /nfs/ALASCCA/aurora
+pip install -e /nfs/ALASCCA/aurora
 
 DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
 if [ ! -e $DBCONF ]; then
