@@ -41,8 +41,9 @@ pip uninstall autoseq && pip install /nfs/ALASCCA/autoseq
 
 # needs pwd
 git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
-git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
 pip uninstall aurora && pip install -e /nfs/ALASCCA/aurora
+
+git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
 
 DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
 if [ ! -e $DBCONF ]; then
