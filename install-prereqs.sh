@@ -37,12 +37,12 @@ function git_clone_or_pull {
 git_clone_or_pull https://github.com/dakl/autoseq-scripts /nfs/ALASCCA/autoseq-scripts
 git_clone_or_pull https://github.com/dakl/autoseq.git /nfs/ALASCCA/autoseq
 conda install --file /nfs/ALASCCA/autoseq/conda-list.txt
-pip install /nfs/ALASCCA/autoseq 
+pip uninstall autoseq && pip install /nfs/ALASCCA/autoseq 
 
 # needs pwd
 git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
 git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
-pip install -e /nfs/ALASCCA/aurora
+pip uninstall aurora && pip install -e /nfs/ALASCCA/aurora
 
 DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
 if [ ! -e $DBCONF ]; then
