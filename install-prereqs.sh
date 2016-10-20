@@ -4,14 +4,11 @@
 wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 bash Miniconda-latest-Linux-x86_64.sh -b -p /nfs/ALASCCA/miniconda2
 
+conda config --add channels dakl
 conda config --add channels r
 conda config --add channels bioconda
 
-wget -O /tmp/autoseq-conda-list.txt https://raw.githubusercontent.com/dakl/autoseq/master/conda-list.txt
-conda install -y --file /tmp/autoseq-conda-list.txt
-rm /tmp/autoseq-conda-list.txt
-
-conda install -y cryptography psycopg2
+conda install -y -c dakl autoseq-scripts
 
 pip install --upgrade pydotplus
 pip install --upgrade vcf_parser
@@ -21,7 +18,7 @@ mkdir -p /nfs/ALASCCA/logs
 
 # pip install from github/clinseq
 pip install --upgrade git+https://github.com/ClinSeq/referral-manager.git
-pip install --upgrade git+https://github.com/dakl/localq.git
+pip install --upgrade git+https://github.com/clinseq/localq.git
 pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
 pip install --upgrade git+https://github.com/clinseq/pypedream.git
 
@@ -34,28 +31,28 @@ function git_clone_or_pull {
     fi
 }
 
-git_clone_or_pull https://github.com/dakl/autoseq-scripts /nfs/ALASCCA/autoseq-scripts
-git_clone_or_pull https://github.com/dakl/autoseq.git /nfs/ALASCCA/autoseq
-conda install --file /nfs/ALASCCA/autoseq/conda-list.txt
-pip install /nfs/ALASCCA/autoseq 
+git_clone_or_pull https://github.com/clinseq/autoseq.git /nfs/ALASCCA/autoseq
+
+conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
+conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
+pip install  /nfs/ALASCCA/autoseq
 
 # needs pwd
 git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
+git_clone_or_pull https://bitbucket.org/clinseq/autoseqapi.git /nfs/ALASCCA/autoseq-api
+git_clone_or_pull https://bitbucket.org/clinseq/clinseq-info /nfs/ALASCCA/clinseq-info
 git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
+
+
+pip install -r /nfs/ALASCCA/autoseq-api/requirements.txt
+pip install -e /nfs/ALASCCA/autoseq-api
+
+pip install -r /nfs/ALASCCA/aurora/requirements.txt
 pip install -e /nfs/ALASCCA/aurora
 
-DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
-if [ ! -e $DBCONF ]; then
-  echo "Copying dbconfig"
-  cp /nfs/ALASCCA/alascca-dotfiles/clinseq-referraldb-config.json $DBCONF
-fi
-
-## linuxbrew
-git clone https://github.com/Linuxbrew/linuxbrew.git /nfs/ALASCCA/linuxbrew
-brew install ack tree
+pip install --upgrade git+https://bitbucket.org/clinseq/reportgen.git
 
 # install R packages
-Rscript install-r-packages.R
 
 ## TexLive 2015
 cd /tmp
