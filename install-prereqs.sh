@@ -8,8 +8,6 @@ conda config --add channels dakl
 conda config --add channels r
 conda config --add channels bioconda
 
-conda install -y -c dakl autoseq-scripts
-
 pip install --upgrade pydotplus
 pip install --upgrade vcf_parser
 pip install --upgrade supervisor
@@ -32,6 +30,7 @@ function git_clone_or_pull {
 }
 
 git_clone_or_pull https://github.com/clinseq/autoseq.git /nfs/ALASCCA/autoseq
+git_clone_or_pull https://github.com/clinseq/autoseq-scripts.git /nfs/ALASCCA/autoseq-scripts
 
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
