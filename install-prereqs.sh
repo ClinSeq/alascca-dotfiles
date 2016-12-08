@@ -4,7 +4,6 @@
 wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 bash Miniconda-latest-Linux-x86_64.sh -b -p /nfs/ALASCCA/miniconda2
 
-conda config --add channels dakl
 conda config --add channels r
 conda config --add channels bioconda
 
@@ -14,11 +13,15 @@ pip install --upgrade supervisor
 
 mkdir -p /nfs/ALASCCA/logs
 
+# install psycopg2 and cryptography using conda
+# they are needed for referral-manager, but fail to install using pip
+conda install -y psycopg2 cryptography
+
 # pip install from github/clinseq
-pip install --upgrade git+https://github.com/ClinSeq/referral-manager.git
-pip install --upgrade git+https://github.com/clinseq/localq.git
-pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
-pip install --upgrade git+https://github.com/clinseq/pypedream.git
+pip install git+https://github.com/ClinSeq/referral-manager.git
+pip install git+https://github.com/clinseq/localq.git
+pip install git+https://github.com/clinseq/multiqc-alascca.git
+pip install git+https://github.com/clinseq/pypedream.git
 
 function git_clone_or_pull {
     if cd $2 ; then
@@ -36,6 +39,18 @@ conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
 pip install  /nfs/ALASCCA/autoseq
 
+# build number 6 (latest as of Dev 7 2016) of bioperl is only 5.7 kb an is missing various modules, install build number 4 manually
+# this issue can be followed at https://github.com/bioconda/bioconda-recipes/issues/3131
+wget https://anaconda.org/bioconda/perl-bioperl/1.6.924/download/linux-64/perl-bioperl-1.6.924-4.tar.bz2
+conda install perl-bioperl-1.6.924-4.tar.bz2
+
+#needs pwd
+pip install --upgrade git+https://bitbucket.org/clinseq/reportgen.git
+
+# at this point, integration tests can be run with the installed verion of autoseq, like so:
+# cd /nfs/ALASCCA/autoseq
+# python tests/run-integration-tests.py
+
 # needs pwd
 git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
 git_clone_or_pull https://bitbucket.org/clinseq/autoseqapi.git /nfs/ALASCCA/autoseq-api
@@ -49,7 +64,6 @@ pip install -e /nfs/ALASCCA/autoseq-api
 pip install -r /nfs/ALASCCA/aurora/requirements.txt
 pip install -e /nfs/ALASCCA/aurora
 
-pip install --upgrade git+https://bitbucket.org/clinseq/reportgen.git
 
 # install R packages
 
