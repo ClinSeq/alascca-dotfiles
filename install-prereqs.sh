@@ -7,54 +7,43 @@ bash Miniconda-latest-Linux-x86_64.sh -b -p /nfs/ALASCCA/miniconda2
 conda config --add channels r
 conda config --add channels bioconda
 
-wget -O /tmp/autoseq-conda-list.txt https://raw.githubusercontent.com/dakl/autoseq/master/conda-list.txt
-conda install -y --file /tmp/autoseq-conda-list.txt
-rm /tmp/autoseq-conda-list.txt
-
-conda install -y cryptography psycopg2
-pip install --upgrade git+https://github.com/ClinSeq/referral-manager.git
-
 pip install --upgrade pydotplus
 pip install --upgrade vcf_parser
-pip install --upgrade git+https://github.com/dakl/localq.git
+pip install --upgrade supervisor
+
+mkdir -p /nfs/ALASCCA/logs
+
+# install psycopg2 and cryptography using conda
+# they are needed for referral-manager, but fail to install using pip
+conda install -y psycopg2 cryptography
 
 # pip install from github/clinseq
-pip install --upgrade git+https://github.com/clinseq/multiqc-alascca.git
-pip install --upgrade git+https://github.com/clinseq/pypedream.git
+pip install git+https://github.com/ClinSeq/referral-manager.git
+pip install git+https://github.com/clinseq/localq.git
+pip install git+https://github.com/clinseq/multiqc-alascca.git
+pip install git+https://github.com/clinseq/pypedream.git
+pip install git+https://github.com/clinseq/reportgen.git
 
 function git_clone_or_pull {
-    if cd $2 ; then 
+    if cd $2 ; then
       git pull
       cd ..
-    else 
-      git clone $1 $2; 
+    else
+      git clone $1 $2;
     fi
 }
 
-git_clone_or_pull https://github.com/dakl/autoseq-scripts /nfs/ALASCCA/autoseq-scripts
-git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources 
-git_clone_or_pull https://github.com/dakl/autoseq.git /nfs/ALASCCA/autoseq
-pip install --upgrade /nfs/ALASCCA/autoseq
+git_clone_or_pull https://github.com/clinseq/autoseq.git /nfs/ALASCCA/autoseq
+git_clone_or_pull https://github.com/clinseq/autoseq-scripts.git /nfs/ALASCCA/autoseq-scripts
 
-# needs pwd
-git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
-pip install --upgrade /nfs/ALASCCA/aurora
+conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
+conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
+pip install  /nfs/ALASCCA/autoseq
 
-# pip install from bitbucket/clinseq
-pip uninstall -y reportgen || pip install -y git+https://bitbucket.org/clinseq/reportgen.git
-
-DBCONF=/nfs/ALASCCA/clinseq-referraldb-config.json
-if [ ! -e $DBCONF ]; then
-  echo "Copying dbconfig"
-  cp /nfs/ALASCCA/alascca-dotfiles/clinseq-referraldb-config.json $DBCONF
-fi
-
-## linuxbrew
-git clone https://github.com/Linuxbrew/linuxbrew.git /nfs/ALASCCA/linuxbrew
-brew install ack tree 
-
-# install R packages
-Rscript install-r-packages.R                                                                                                              
+# build number 6 (latest as of Dev 7 2016) of bioperl is only 5.7 kb an is missing various modules, install build number 4 manually
+# this issue can be followed at https://github.com/bioconda/bioconda-recipes/issues/3131
+wget https://anaconda.org/bioconda/perl-bioperl/1.6.924/download/linux-64/perl-bioperl-1.6.924-4.tar.bz2
+conda install perl-bioperl-1.6.924-4.tar.bz2
 
 ## TexLive 2015
 cd /tmp
@@ -63,10 +52,30 @@ tar -zxvf install-tl-unx.tar.gz
 cd install-tl-*
 ./install-tl -profile /nfs/ALASCCA/alascca-dotfiles/texlive.profile
 
-echo 
+######################################################
+# at this point, integration tests can be run with the installed verion of autoseq, like so:
+# cd /nfs/ALASCCA/autoseq
+# python tests/run-integration-tests.py
+######################################################
+
+######################################################
+# install autoseq web API (autoseq-api) and front-end (aurora)
+# needs pwd
+
+git_clone_or_pull https://bitbucket.org/clinseq/aurora.git /nfs/ALASCCA/aurora
+git_clone_or_pull https://bitbucket.org/clinseq/autoseqapi.git /nfs/ALASCCA/autoseq-api
+git_clone_or_pull https://bitbucket.org/clinseq/clinseq-info /nfs/ALASCCA/clinseq-info
+git_clone_or_pull https://bitbucket.org/clinseq/genome-resources /nfs/ALASCCA/genome-resources
+
+
+pip install -r /nfs/ALASCCA/autoseq-api/requirements.txt
+pip install -e /nfs/ALASCCA/autoseq-api
+
+pip install -r /nfs/ALASCCA/aurora/requirements.txt
+pip install -e /nfs/ALASCCA/aurora
+
+echo
 echo "you should now run "
 echo generate-ref --genome-resources /nfs/ALASCCA/genome-resources --outdir /nfs/ALASCCA/autoseq-genome
 echo "to generate reference files required by autoseq"
-
-"
 echo

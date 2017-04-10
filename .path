@@ -6,4 +6,4 @@ export INFOPATH="/nfs/ALASCCA/linuxbrew/share/info:$INFOPATH"
 export PATH=/nfs/ALASCCA/.texlive2015/texlive/2015/bin/x86_64-linux:$PATH
 export PATH=/nfs/ALASCCA/autoseq-scripts/:$PATH
 export PATH=/nfs/ALASCCA/miniconda2/bin/:$PATH
-
+export GATK=/nfs/ALASCCA/autoseq-scripts/GenomeAnalysisTK-3.5.jar
