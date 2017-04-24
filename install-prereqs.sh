@@ -10,6 +10,7 @@ conda config --add channels bioconda
 pip install --upgrade pydotplus
 pip install --upgrade vcf_parser
 pip install --upgrade supervisor
+pip install --upgrade pybedtools
 
 mkdir -p /nfs/ALASCCA/logs
 
