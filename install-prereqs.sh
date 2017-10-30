@@ -53,6 +53,14 @@ tar -zxvf install-tl-unx.tar.gz
 cd install-tl-*
 ./install-tl -profile /nfs/ALASCCA/alascca-dotfiles/texlive.profile
 
+# Clone mSINGS and set up it's virtual environment
+conda install -y virtualenv  # required for msings vir env setup
+git clone_or_pull https://bitbucket.org/uwlabmed/msings.git /nfs/ALASCCA/msings
+cd /nfs/ALASCCA/msings/
+bash dev/bootstrap.sh  # setting up the vir env and installing msings within it
+cd ..
+
+
 ######################################################
 # at this point, integration tests can be run with the installed verion of autoseq, like so:
 # cd /nfs/ALASCCA/autoseq
