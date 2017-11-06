@@ -55,7 +55,7 @@ cd install-tl-*
 
 # Clone mSINGS and set up it's virtual environment
 conda install -y virtualenv  # required for msings vir env setup
-git clone_or_pull https://bitbucket.org/uwlabmed/msings.git /nfs/ALASCCA/msings
+git_clone_or_pull https://bitbucket.org/uwlabmed/msings.git /nfs/ALASCCA/msings
 cd /nfs/ALASCCA/msings/
 bash dev/bootstrap.sh  # setting up the vir env and installing msings within it
 cd ..
