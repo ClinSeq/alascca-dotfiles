@@ -19,11 +19,7 @@ collection-fontsrecommended 1
 collection-fontutils 1
 collection-formatsextra 1
 collection-games 1
-collection-genericextra 1
-collection-genericrecommended 1
-collection-htmlxml 1
 collection-humanities 1
-collection-langafrican 1
 collection-langarabic 1
 collection-langchinese 1
 collection-langcjk 1
@@ -34,7 +30,6 @@ collection-langeuropean 1
 collection-langfrench 1
 collection-langgerman 1
 collection-langgreek 1
-collection-langindic 1
 collection-langitalian 1
 collection-langjapanese 1
 collection-langkorean 1
@@ -46,15 +41,12 @@ collection-latex 1
 collection-latexextra 1
 collection-latexrecommended 1
 collection-luatex 1
-collection-mathextra 1
 collection-metapost 1
 collection-music 1
-collection-omega 1
 collection-pictures 1
-collection-plainextra 1
 collection-pstricks 1
 collection-publishers 1
-collection-science 1
+collection-mathscience 1
 collection-texworks 1
 collection-xetex 1
 in_place 0
