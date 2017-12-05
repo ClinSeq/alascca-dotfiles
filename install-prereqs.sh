@@ -60,6 +60,16 @@ cd /nfs/ALASCCA/msings/
 bash dev/bootstrap.sh  # setting up the vir env and installing msings within it
 cd ..
 
+# Install PureCN and dependencies in a conda environment
+conda create -y --name purecn-env R=3.4.1 r-xml 
+source activate purecn-env
+R --vanilla -e 'source("https://bioconductor.org/biocLite.R")' \
+-e 'biocLite("PureCN")' \
+-e 'biocLite("TxDb.Hsapiens.UCSC.hg19.knownGene")' \
+-e 'biocLite("org.Hs.eg.db")' \
+-e 'install.packages("optparse", repos = "http://ftp.acc.umu.se/mirror/CRAN/")'
+source deactivate
+
 
 ######################################################
 # at this point, integration tests can be run with the installed verion of autoseq, like so:
