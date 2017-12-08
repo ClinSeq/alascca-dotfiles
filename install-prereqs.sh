@@ -63,7 +63,7 @@ cd ..
 # Install PureCN and dependencies in a conda environment
 conda create -y --name purecn-env R=3.4.1 r-xml 
 source activate purecn-env
-R --vanilla -e 'source("https://bioconductor.org/biocLite.R")' \
+R --vanilla --quiet -e 'source("https://bioconductor.org/biocLite.R")' \
 -e 'biocLite("PureCN")' \
 -e 'biocLite("TxDb.Hsapiens.UCSC.hg19.knownGene")' \
 -e 'biocLite("org.Hs.eg.db")' \
