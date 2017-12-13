@@ -37,6 +37,8 @@ function git_clone_or_pull {
 git_clone_or_pull https://github.com/clinseq/autoseq.git /nfs/ALASCCA/autoseq
 git_clone_or_pull https://github.com/clinseq/autoseq-scripts.git /nfs/ALASCCA/autoseq-scripts
 
+pip install -r /nfs/ALASCCA/autoseq-scripts/requirements.txt
+
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
 pip install  /nfs/ALASCCA/autoseq
