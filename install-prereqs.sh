@@ -24,6 +24,7 @@ pip install git+https://github.com/clinseq/localq.git
 pip install git+https://github.com/clinseq/multiqc-alascca.git
 pip install git+https://github.com/clinseq/pypedream.git
 pip install git+https://github.com/clinseq/reportgen.git
+pip install git+https://github.com/tomwhi/svcaller.git
 
 function git_clone_or_pull {
     if cd $2 ; then
@@ -63,7 +64,7 @@ bash dev/bootstrap.sh  # setting up the vir env and installing msings within it
 cd ..
 
 # Install PureCN and dependencies in a conda environment
-conda create -y --name purecn-env R=3.4.1 r-xml 
+conda create -y --name purecn-env R=3.4.1 r-xml
 source activate purecn-env
 R --vanilla --quiet -e 'source("https://bioconductor.org/biocLite.R")' \
 -e 'biocLite("PureCN")' \
