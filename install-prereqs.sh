@@ -53,6 +53,8 @@ pip install  /nfs/ALASCCA/autoseq
 conda create -y --name qdnaseqenv
 source activate qdnaseqenv
 conda install -y r=3.3.1
+conda install -y r-data.table=1.10.0
+conda install -y r-getopt=1.20.0
 conda install -y bioconductor-qdnaseq=1.10.0
 source deactivate
 
