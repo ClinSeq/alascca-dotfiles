@@ -49,6 +49,18 @@ conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
 pip install  /nfs/ALASCCA/autoseq
 
+# Create a separate environment for qdnaseq, due to conflicts with R versions:
+conda create -y --name qdnaseqenv
+source activate qdnaseqenv
+conda install -y r=3.3.1
+conda install -y bioconductor-qdnaseq=1.10.0
+source deactivate
+
+conda create -y --name svcallerenv python=3.6
+source activate svcallerenv
+pip install git+https://github.com/tomwhi/svcaller.git
+source deactivate
+
 # build number 6 (latest as of Dev 7 2016) of bioperl is only 5.7 kb an is missing various modules, install build number 4 manually
 # this issue can be followed at https://github.com/bioconda/bioconda-recipes/issues/3131
 wget https://anaconda.org/bioconda/perl-bioperl/1.6.924/download/linux-64/perl-bioperl-1.6.924-4.tar.bz2
