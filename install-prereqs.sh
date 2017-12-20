@@ -24,7 +24,12 @@ pip install git+https://github.com/clinseq/localq.git
 pip install git+https://github.com/clinseq/multiqc-alascca.git
 pip install git+https://github.com/clinseq/pypedream.git
 pip install git+https://github.com/clinseq/reportgen.git
+
+# Create a separate environment for svcaller, as it's python 3:
+conda create -y --name svcallerenv python=3.6
+source activate svcallerenv
 pip install git+https://github.com/tomwhi/svcaller.git
+source deactivate
 
 function git_clone_or_pull {
     if cd $2 ; then
