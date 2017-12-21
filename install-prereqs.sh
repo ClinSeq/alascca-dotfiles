@@ -58,11 +58,6 @@ conda install -y r-getopt=1.20.0
 conda install -y bioconductor-qdnaseq=1.10.0
 source deactivate
 
-conda create -y --name svcallerenv python=3.6
-source activate svcallerenv
-pip install git+https://github.com/tomwhi/svcaller.git
-source deactivate
-
 # build number 6 (latest as of Dev 7 2016) of bioperl is only 5.7 kb an is missing various modules, install build number 4 manually
 # this issue can be followed at https://github.com/bioconda/bioconda-recipes/issues/3131
 wget https://anaconda.org/bioconda/perl-bioperl/1.6.924/download/linux-64/perl-bioperl-1.6.924-4.tar.bz2
