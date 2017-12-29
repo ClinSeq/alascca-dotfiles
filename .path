@@ -2,6 +2,8 @@
 export PATH="/nfs/ALASCCA/linuxbrew/bin:$PATH"
 export MANPATH="/nfs/ALASCCA/linuxbrew/share/man:$MANPATH"
 export INFOPATH="/nfs/ALASCCA/linuxbrew/share/info:$INFOPATH"
+path_to_miniconda_libgfortran=`ls -d /nfs/ALASCCA/miniconda2/pkgs/libgfortran-ng-*/lib | head -1`
+export LD_LIBRARY_PATH="$path_to_miniconda_libgfortran:$LD_LIBRARY_PATH"
 
 export PATH=/nfs/ALASCCA/.texlive2015/texlive/2015/bin/x86_64-linux:$PATH
 export PATH=/nfs/ALASCCA/autoseq-scripts/:$PATH
