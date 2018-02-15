@@ -45,8 +45,8 @@ git_clone_or_pull https://github.com/clinseq/autoseq-scripts.git /nfs/ALASCCA/au
 
 pip install -r /nfs/ALASCCA/autoseq-scripts/requirements.txt
 
-conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
 conda install -y --file /nfs/ALASCCA/autoseq/conda-list-tests.txt
+conda install -y --file /nfs/ALASCCA/autoseq/conda-list.txt
 pip install  /nfs/ALASCCA/autoseq
 
 # Create a separate environment for qdnaseq, due to conflicts with R versions:
