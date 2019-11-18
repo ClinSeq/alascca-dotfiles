@@ -10,3 +10,4 @@ export PATH=/nfs/ALASCCA/autoseq-scripts/:$PATH
 export PATH=/nfs/ALASCCA/miniconda2/bin/:$PATH
 export GATK=/nfs/ALASCCA/autoseq-scripts/GenomeAnalysisTK-3.5.jar
 export MSINGSENV=/nfs/ALASCCA/msings/msings-env
+export GRIDSS_JAR=/nfs/ALASCCA/autoseq-scripts/gridss-2.7.2-gridss-jar-with-dependencies.jar
